@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import { Item, Button } from './ContacList.Styled';
 
 const ContactList = ({ filter, onDeleteItem }) => {
-  //   console.log(filter);
   return (
     <ul>
       {filter.map(({ name, number, id }) => (

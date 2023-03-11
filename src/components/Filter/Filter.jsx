@@ -1,25 +1,19 @@
-import React from 'react';
+import { useState } from 'react';
 import { Label, Input } from './Filter.Styled';
 
-class Filter extends React.Component {
-  state = {
-    input: '',
+export default function Filter({ onInput }) {
+  const [input, setInput] = useState('');
+
+  const handleInputChange = event => {
+    const inputData = event.currentTarget.value;
+    setInput(inputData);
+    onInput(inputData);
   };
-  handleInputChange = event => {
-    this.setState({ input: event.currentTarget.value });
-    this.props.onInput(event.currentTarget.value);
-  };
-  render() {
-    return (
-      <Label htmlFor="">
-        Find contacts by name:
-        <Input
-          type="text"
-          value={this.state.input}
-          onChange={this.handleInputChange}
-        />
-      </Label>
-    );
-  }
+
+  return (
+    <Label htmlFor="">
+      Find contacts by name:
+      <Input type="text" value={input} onChange={handleInputChange} />
+    </Label>
+  );
 }
-export default Filter;
